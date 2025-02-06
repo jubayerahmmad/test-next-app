@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
+import { signIn } from "next-auth/react";
 const Navbar = () => {
   const pathname = usePathname();
 
@@ -32,6 +32,12 @@ const Navbar = () => {
           </li>
           <li>
             <Link href="/add-blog">Add Blog</Link>
+          </li>
+          <li>
+            <button onClick={() => signIn()}>Login</button>
+          </li>
+          <li>
+            <Link href="/register">Register</Link>
           </li>
         </ul>
       </nav>

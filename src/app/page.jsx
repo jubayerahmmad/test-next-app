@@ -1,4 +1,9 @@
-export default function Home() {
+import { getServerSession } from "next-auth";
+import UserInfo from "./components/UserInfo";
+import { authOptions } from "./api/auth/[...nextauth]/route";
+
+export default async function Home() {
+  const session = await getServerSession(authOptions);
   return (
     <main>
       <h2 className="text-4xl mt-10">
@@ -8,6 +13,10 @@ export default function Home() {
         Nesciunt, iure. Lorem ipsum dolor sit amet consectetur adipisicing elit.
         Libero, voluptate.
       </h2>
+      <p className="font-bold my-4">FROM CLIENT COMPONENT: </p>
+      <UserInfo />
+      <p className="font-bold my-4">FROM SERVER COMP</p>
+      {JSON.stringify(session)}
     </main>
   );
 }

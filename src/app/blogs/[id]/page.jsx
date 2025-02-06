@@ -13,7 +13,7 @@ const Blog = async ({ params }) => {
   return (
     <div className="space-y-4 mt-5">
       <h1 className="font-bold text-xl">{SingleBlog.name}</h1>
-      <p>{SingleBlog.blog}</p>
+      <p>{SingleBlog.blog}  </p> 
     </div>
   );
 };

@@ -1,0 +1,8 @@
+{
+  "editor.cursorBlinking": "expand",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.fontSize": 16,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "diffEditor.experimental.showMoves": true
+}
