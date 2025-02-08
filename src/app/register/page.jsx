@@ -2,7 +2,7 @@
 
 import registerUser from "../actions/auth/registerUser";
 
-const Register = async () => {
+const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     const form = e.target;

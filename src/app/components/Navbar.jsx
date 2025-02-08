@@ -1,10 +1,10 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { signIn } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 const Navbar = () => {
   const pathname = usePathname();
-
+  // const session = await getServerSession(authOptions);
   if (pathname.includes("dashboard")) {
     return <></>;
   }
@@ -33,11 +33,31 @@ const Navbar = () => {
           <li>
             <Link href="/add-blog">Add Blog</Link>
           </li>
+          {/* {session?.user ? (
+            <>
+              <li>
+                <button onClick={() => signOut()}>Logout</button>
+              </li>
+            </>
+          ) : (
+            <>
+            
+              <li>
+                <button onClick={() => signIn()}>Login</button>
+              </li>
+              <li>
+                <Link href="/register">Register</Link>
+              </li>
+            </>
+          )} */}
           <li>
             <button onClick={() => signIn()}>Login</button>
           </li>
           <li>
             <Link href="/register">Register</Link>
+          </li>
+          <li>
+            <button onClick={() => signOut()}>Logout</button>
           </li>
         </ul>
       </nav>

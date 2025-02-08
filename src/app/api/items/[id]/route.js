@@ -1,10 +1,12 @@
-import { dbConnect } from "@/app/lib/dbConnect";
+import { collectionNames, dbConnect } from "@/app/lib/dbConnect";
 import { ObjectId } from "mongodb";
 
 // get singldata
 export async function GET(req, { params }) {
   const id = await params;
-  const result = await dbConnect("blogs").findOne({ _id: new ObjectId(id) });
+  const result = await dbConnect(collectionNames.BLOGS).findOne({
+    _id: new ObjectId(id),
+  });
   // return Response.json(result);
   return new Response(JSON.stringify(result));
 }
@@ -12,7 +14,9 @@ export async function GET(req, { params }) {
 // delete singldata
 export async function DELETE(req, { params }) {
   const id = await params;
-  const result = await dbConnect("blogs").deleteOne({ _id: new ObjectId(id) });
+  const result = await dbConnect(collectionNames.BLOGS).deleteOne({
+    _id: new ObjectId(id),
+  });
   return Response.json(result);
 }
 
@@ -26,8 +30,12 @@ export async function PATCH(req, { params }) {
       ...updatedData,
     },
   };
-  const result = await dbConnect("blogs").updateOne(filter, updatedDoc, {
-    upsert: true,
-  });
+  const result = await dbConnect(collectionNames.BLOGS).updateOne(
+    filter,
+    updatedDoc,
+    {
+      upsert: true,
+    }
+  );
   return Response.json(result);
 }
